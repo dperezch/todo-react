@@ -1,4 +1,5 @@
 import CrossIcon from "./components/icons/CrossIcon";
+import MoonIcon from "./components/icons/MoonIcon";
 
 const App = () => {
   return (
@@ -8,7 +9,9 @@ const App = () => {
           <h1 className="text-2xl font-semibold uppercase tracking-[0.3em] text-white">
             Todo
           </h1>
-          <button>luna</button>
+          <button>
+            <MoonIcon fill="#fff" className="fill-red-500" />
+          </button>
         </div>
         <form className="mt-8 flex items-center gap-4 overflow-hidden rounded-md bg-white py-4 px-4">
           <span className="inline-block h-5 w-5 rounded-full border-2"></span>
@@ -42,21 +45,23 @@ const App = () => {
               <CrossIcon />
             </button>
           </article>
-        </div>
 
-        <section>
-          <span> 5 items left</span>
-          <button>Clear Completed</button>
-        </section>
+          <section className="flex justify-between py-4 px-4">
+            <span className="text-gray-400"> 5 items left</span>
+            <button className="text-gray-400">Clear Completed</button>
+          </section>
+        </div>
       </main>
 
-      <section className="container mx-auto px-4">
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
+      <section className="container mx-auto mt-8 px-4">
+        <div className="flex justify-center gap-4 rounded-md bg-white p-4">
+          <button className="text-blue-600">All</button>
+          <button className="hover:text-blue-600">Active</button>
+          <button className="hover:text-blue-600">Completed</button>
+        </div>
       </section>
 
-      <p className="text-center">Drag and drop to reorder list</p>
+      <p className="mt-8 text-center">Drag and drop to reorder list</p>
     </div>
   );
 };
