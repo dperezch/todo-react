@@ -38,7 +38,25 @@ const App = () => {
       completed: false,
     };
 
-    setTodos([...todos, newTodo])
+    setTodos([...todos, newTodo]);
+  };
+
+  const removeTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const updateTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  const computedItemsLeft = todos.filter((todo) => !todo.completed).length;
+
+  const clearComplete = () => {
+    setTodos(todos.filter((todo) => !todo.completed));
   };
 
   return (
@@ -48,9 +66,13 @@ const App = () => {
       <main className="container mx-auto mt-8 px-4">
         <TodoCreate createTodo={createTodo} />
 
-        <TodoList todos={todos} />
+        <TodoList
+          todos={todos}
+          removeTodo={removeTodo}
+          updateTodo={updateTodo}
+        />
 
-        <TodoComputed />
+        <TodoComputed computedItemsLeft={computedItemsLeft} clearComplete={clearComplete} />
 
         <TodoFilter />
       </main>
